@@ -25,5 +25,5 @@ jobs:
           git config user.name "github-actions"
           git config user.email "github-actions@github.com"
           git add activity.log
-          git commit -m "Daily automated update" || echo "No changes"
-          git push
+          git commit -m "Daily update" || echo "No changes"
+          git push -u origin main
