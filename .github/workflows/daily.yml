@@ -18,12 +18,12 @@ jobs:
 
       - name: Make a real update
         run: |
-          echo "Update on $(date -u)" >> activity.log
+          echo "Update on $(date -u)" >> activity.md
 
       - name: Commit and push
         run: |
           git config user.name "github-actions"
           git config user.email "github-actions@github.com"
-          git add activity.log
+          git add activity.md
           git commit -m "Daily update" || echo "No changes"
           git push -u origin main
