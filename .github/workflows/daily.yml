@@ -1,0 +1,26 @@
+name: Daily Contribution
+
+on:
+  schedule:
+    - cron: "0 0,2,4,6,8,10,12,14,16,18 * * *"
+  workflow_dispatch:
+
+jobs:
+  update:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repo
+        uses: actions/checkout@v4
+
+      - name: Make a real update
+        run: |
+          echo "Update on $(date -u)" >> activity.log
+
+      - name: Commit and push
+        run: |
+          git config user.name "github-actions"
+          git config user.email "github-actions@github.com"
+          git add activity.log
+          git commit -m "Daily update"
+          git push
